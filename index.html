@@ -13838,7 +13838,7 @@ dialog {
 <button aria-label="Cerrar" class="admin-close" id="adminPinClose">✕</button>
 <h3 class="serif" id="adminPinTitle">Acceso de administración</h3>
 <p>El PIN solo oculta este panel; no protege la base de datos. Antes de publicar, protege Firebase con autenticación y reglas de acceso privadas.</p>
-<input aria-label="PIN de administrador" autocomplete="one-time-code" class="admin-pin-input" id="adminPinInput" inputmode="numeric" maxlength="6" placeholder="••••" type="password"/>
+<input aria-label="PIN de administrador" autocomplete="one-time-code" class="admin-pin-input" id="adminPinInput" inputmode="numeric" maxlength="6" placeholder="••••••" type="password"/>
 <div class="admin-err" id="adminErr">PIN incorrecto, inténtalo de nuevo.</div>
 <button class="btn btn-solid" id="adminPinSubmit" style="width:100%;justify-content:center;cursor:pointer;" type="button">Entrar</button>
 </div>
@@ -14408,7 +14408,7 @@ Jean Paul Gaultier Le Male Elixir 100ml - $2600" rows="7" style="width:100%;padd
 <div>
 <span style="font-size:0.68rem;font-weight:800;background:var(--dandy-gold-primary);color:#0b090e;padding:2px 8px;border-radius:999px;">GESTIONAR SALDO VIP</span>
 <h4 id="admTargetUserName" style="margin:4px 0 0;font-size:1rem;color:#fff4d4;">Selecciona un cliente</h4>
-<div id="admTargetUserEmail" style="font-size:0.75rem;color:#bdaea0;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="67040b0e0209130227020a060e0b4904080a">[email&#160;protected]</a></div>
+<div id="admTargetUserEmail" style="font-size:0.75rem;color:#bdaea0;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9af9f6f3fff4eeffdafff7fbf3f6b4f9f5f7">[email&#160;protected]</a></div>
 </div>
 <div style="text-align:right;">
 <span style="font-size:0.68rem;color:#bdaea0;display:block;">Saldo Actual:</span>
@@ -14786,7 +14786,7 @@ Jean Paul Gaultier Le Male Elixir 100ml - $2600" rows="7" style="width:100%;padd
 </script>
 <script>
 (function(){
-  var ADMIN_PIN = "2710";
+  var ADMIN_PIN = "271069";
   var STORAGE_PREFIX = "dandyPrice_";
   var WA_BASE = 'https://wa.me/524681138426?text=';
   var WAS_NOW = ['Recargas Telcel','Recargas Bait','Paquetes Bait'];
@@ -14998,7 +14998,7 @@ Jean Paul Gaultier Le Male Elixir 100ml - $2600" rows="7" style="width:100%;padd
 
   function tryPin(){
     var val = pinInput.value.trim();
-    if(val === ADMIN_PIN || val === "1999" || val === "1234"){
+    if(val === ADMIN_PIN){
       overlay.classList.remove('open');
       groupsEl.innerHTML = '';
       buildPanel();
@@ -24077,7 +24077,7 @@ Jean Paul Gaultier Le Male Elixir 100ml - $2600" rows="7" style="width:100%;padd
 <div class="user-profile-badge">
 <div>
 <strong id="profileUserName" style="font-size:1.05rem;color:#fff4d4;display:block;">Carlos Mendoza</strong>
-<span id="profileUserEmail" style="font-size:0.75rem;color:#bdaea0;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="80e3e1f2eceff3c0e7ede1e9ecaee3efed">[email&#160;protected]</a></span>
+<span id="profileUserEmail" style="font-size:0.75rem;color:#bdaea0;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c0a3a1b2acafb380a7ada1a9aceea3afad">[email&#160;protected]</a></span>
 <span id="profileUserPhone" style="font-size:0.72rem;color:#86efac;display:block;margin-top:2px;">📱 WhatsApp: 5512345678</span>
 </div>
 <div style="text-align:right;">
@@ -25762,33 +25762,49 @@ Jean Paul Gaultier Le Male Elixir 100ml - $2600" rows="7" style="width:100%;padd
     }
   }
 
-  // 3. RESOLVEDOR INTELIGENTE Y EXACTO DE FOTO DE PERFUMES
+  // 3. RESOLVEDOR QUIRÚRGICO DE FOTO EXACTA DE PERFUMES
+  function normalizeFragranceKey(s){
+    if(!s) return '';
+    var str = String(s).toLowerCase().replace(/[-_]/g, ' ');
+    str = str.replace(/[^a-z0-9\s]/g, ' ');
+    var tokens = str.split(/\s+/);
+    var stopWords = {
+      'de':1, 'du':1, 'el':1, 'la':1, 'le':1, 'al':1, 'del':1, 'd':1, 'for':1, 'pour':1,
+      'eau':1, 'parfum':1, 'toilette':1, 'extrait':1, 'edp':1, 'edt':1, 'spray':1,
+      '100ml':1, '105ml':1, '80ml':1, '50ml':1, 'original':1, 'sellado':1, 'perfume':1,
+      'locion':1, 'hombre':1, 'mujer':1, 'unisex':1, 'dama':1, 'caballero':1, 'envio':1, 'gratis':1
+    };
+    var filtered = tokens.filter(function(t){ return !stopWords[t] && t.length >= 2; });
+    return filtered.join(' ');
+  }
+
   function resolveBestPhoto(textOrUrl){
     if(!textOrUrl) return DANDY_DEFAULT_IMG;
     var raw = String(textOrUrl).trim();
 
-    // 1. Si el texto contiene una URL directa de imagen (mlstatic, amazon, webp, jpg, png)
+    // 1. Si el texto contiene una URL directa de imagen real
     var imgUrlMatch = raw.match(/https?:\/\/[^\s]+(?:\.webp|\.jpg|\.png|\.jpeg|http2\.mlstatic\.com\/D_NQ_NP_[^\s]+|m\.media-amazon\.com\/images\/I\/[^\s]+)[^\s]*/i);
     if(imgUrlMatch){
       return imgUrlMatch[0];
     }
 
-    var low = raw.toLowerCase().replace(/[-_]/g, ' ');
+    var normRaw = normalizeFragranceKey(raw);
 
-    // 2. Coincidencia Quirúrgica Exacta (ordenada por longitud descendente de clave)
+    // 2. Coincidencia Quirúrgica por Clave Normalizada (ordenada por longitud descendente)
     for(var i = 0; i < SURGICAL_KB.length; i++){
       var item = SURGICAL_KB[i];
-      if(item && item.key && low.indexOf(item.key) !== -1){
-        if(item.img) return item.img;
+      if(item && item.norm_key){
+        if(normRaw.indexOf(item.norm_key) !== -1 || item.norm_key.indexOf(normRaw) !== -1){
+          if(item.img) return item.img;
+        }
       }
     }
 
-    // 3. Búsqueda en el Catálogo de 103 Perfumes Oficiales
+    // 3. Búsqueda en el Catálogo Inicial
     for(var j = 0; j < INITIAL_CATALOG.length; j++){
       var catItem = INITIAL_CATALOG[j];
-      var catTitle = (catItem.title || catItem.name || '').toLowerCase();
-      // Match if the title or key is contained
-      if(catTitle && (low.indexOf(catTitle) !== -1 || catTitle.indexOf(low) !== -1)){
+      var catTitleNorm = normalizeFragranceKey(catItem.title || catItem.name || '');
+      if(catTitleNorm && (normRaw.indexOf(catTitleNorm) !== -1 || catTitleNorm.indexOf(normRaw) !== -1)){
         if(catItem.img) return catItem.img;
       }
     }
@@ -25797,6 +25813,7 @@ Jean Paul Gaultier Le Male Elixir 100ml - $2600" rows="7" style="width:100%;padd
   }
 
   function getPerfumeImage(p){
+    if(p.image_url && p.image_url.indexOf('http') === 0 && p.image_url.indexOf('via.placeholder') === -1) return p.image_url;
     if(p.img && p.img.indexOf('http') === 0 && p.img.indexOf('via.placeholder') === -1) return p.img;
     return resolveBestPhoto(p.title || p.name || '');
   }
@@ -26125,29 +26142,7 @@ Jean Paul Gaultier Le Male Elixir 100ml - $2600" rows="7" style="width:100%;padd
     }
   };
 
-  window.dandyPerfumeDelete = function(identifier){
-    var list = getActiveCatalog();
-    var idx = -1;
-    if(typeof identifier === 'number') {
-      idx = identifier;
-    } else if(typeof identifier === 'string') {
-      idx = list.findIndex(function(p){ return p && (p.id === identifier || p.title === identifier); });
-      if(idx === -1 && !isNaN(parseInt(identifier, 10))) {
-        idx = parseInt(identifier, 10);
-      }
-    }
-    if(idx !== -1 && list[idx]){
-      var itemTitle = list[idx].title || list[idx].name || 'este perfume';
-      if(confirm('¿Confirmas eliminar "' + itemTitle + '" del catálogo oficial e inventario?')){
-        list.splice(idx, 1);
-        saveActiveCatalog(list);
-        toast('✅ Perfume "' + itemTitle + '" eliminado correctamente.');
-      }
-    } else {
-      toast('No se encontró el perfume para eliminar.');
-    }
-  };
-
+  
   window.dandyRestoreDefaultCatalog = function(){
     if(confirm('¿Restablecer todo el inventario de perfumería al catálogo inicial de 103 fragancias?')){
       var list = INITIAL_CATALOG.slice();
@@ -26817,6 +26812,149 @@ Jean Paul Gaultier Le Male Elixir 100ml - $2600" rows="7" style="width:100%;padd
     }
   }
 
+
+  // =========================================================================
+  // SUITE COMPLETA DE FUNCIONES GLOBALES PARA BORRADO RÁPIDO & GESTIÓN ADMIN
+  // =========================================================================
+
+  window.dandyToast = function(msg, duration){
+    var toastEl = document.getElementById('adminToast') || document.getElementById('dandyGlobalToast');
+    if(!toastEl){
+      toastEl = document.createElement('div');
+      toastEl.id = 'dandyGlobalToast';
+      toastEl.style.cssText = 'position:fixed;bottom:24px;right:24px;z-index:999999;background:linear-gradient(135deg,#1f1a14,#0e0b07);color:#ffd700;border:1.5px solid #d4af37;border-radius:10px;padding:12px 20px;font-size:0.88rem;font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,0.8);display:flex;align-items:center;gap:8px;transition:opacity 0.3s, transform 0.3s;';
+      document.body.appendChild(toastEl);
+    }
+    toastEl.innerHTML = '<span>⚡</span> <span>' + msg + '</span>';
+    toastEl.style.opacity = '1';
+    toastEl.style.transform = 'translateY(0)';
+    toastEl.style.display = 'flex';
+    clearTimeout(toastEl._timer);
+    toastEl._timer = setTimeout(function(){
+      toastEl.style.opacity = '0';
+      toastEl.style.transform = 'translateY(10px)';
+      setTimeout(function(){ toastEl.style.display = 'none'; }, 300);
+    }, duration || 3000);
+  };
+
+  window.dandyPerfumeDelete = function(identifier){
+    var list = getActiveCatalog();
+    var idx = -1;
+    if(typeof identifier === 'number') {
+      idx = identifier;
+    } else if(typeof identifier === 'string') {
+      idx = list.findIndex(function(p){ return p && (p.id === identifier || p.title === identifier); });
+      if(idx === -1 && !isNaN(parseInt(identifier, 10))) {
+        idx = parseInt(identifier, 10);
+      }
+    }
+    
+    if(idx >= 0 && idx < list.length && list[idx]){
+      var itemTitle = list[idx].title || list[idx].name || 'este perfume';
+      var directToggle = document.getElementById('pfAdminDirectDeleteToggle');
+      var isDirect = directToggle && directToggle.checked;
+
+      if(isDirect || confirm('¿Eliminar "' + itemTitle + '" del catálogo oficial e inventario?')){
+        var removed = list.splice(idx, 1);
+        saveActiveCatalog(list);
+        window.dandyToast('🗑️ "' + itemTitle + '" eliminado correctamente.');
+      }
+    } else {
+      window.dandyToast('⚠️ No se encontró el perfume a eliminar.');
+    }
+  };
+
+  window.dandyPerfumeDeleteFast = function(identifier){
+    window.dandyPerfumeDelete(identifier);
+  };
+
+  window.dandyAdminDeleteSelected = function(){
+    var checks = document.querySelectorAll('.pf-admin-check:checked');
+    if(!checks || checks.length === 0){
+      window.dandyToast('Selecciona al menos un perfume marcando su casilla.');
+      return;
+    }
+
+    var count = checks.length;
+    if(confirm('¿Confirmas eliminar los ' + count + ' perfumes seleccionados del catálogo oficial?')){
+      var indicesToDelete = [];
+      checks.forEach(function(c){
+        var idx = parseInt(c.getAttribute('data-idx'), 10);
+        if(!isNaN(idx)) indicesToDelete.push(idx);
+      });
+
+      // Sort descending to splice without shifting indices
+      indicesToDelete.sort(function(a,b){ return b - a; });
+
+      var list = getActiveCatalog();
+      indicesToDelete.forEach(function(idx){
+        if(list[idx]){
+          list.splice(idx, 1);
+        }
+      });
+
+      saveActiveCatalog(list);
+      window.dandyToast('✅ ' + count + ' perfumes eliminados correctamente.');
+    }
+  };
+
+  window.dandyAdminToggleSelectAll = function(isChecked){
+    var checks = document.querySelectorAll('.pf-admin-check');
+    checks.forEach(function(c){ c.checked = isChecked; });
+    window.dandyAdminUpdateSelectCount();
+  };
+
+  window.dandyAdminUpdateSelectCount = function(){
+    var checks = document.querySelectorAll('.pf-admin-check:checked');
+    var count = checks ? checks.length : 0;
+    var btn = document.getElementById('pfAdminDeleteSelectedBtn');
+    var badge = document.getElementById('pfAdminDeleteCountBadge');
+    var label = document.getElementById('pfAdminSelectedCount');
+    
+    if(btn && badge && label){
+      if(count > 0){
+        btn.style.display = 'inline-flex';
+        badge.textContent = count;
+        label.style.display = 'inline';
+        label.textContent = '(' + count + ' seleccionados)';
+      } else {
+        btn.style.display = 'none';
+        label.style.display = 'none';
+      }
+    }
+    var selectAll = document.getElementById('pfAdminSelectAll');
+    var allChecks = document.querySelectorAll('.pf-admin-check');
+    if(selectAll && allChecks.length > 0){
+      selectAll.checked = (count === allChecks.length);
+    }
+  };
+
+  window.dandyAdminQuickBrand = function(brand){
+    var input = document.getElementById('pfAdminSearchInput');
+    if(input){
+      input.value = brand;
+      renderAdminLists(getActiveCatalog());
+    }
+  };
+
+  window.dandyFilterAdminPerfumes = function(){
+    renderAdminLists(getActiveCatalog());
+  };
+
+  window.dandySerpSetCategory = function(cat){
+    var catSelect = document.getElementById('serpCategoryFilter');
+    if(catSelect) {
+      catSelect.value = cat;
+      if(typeof window.dandySerpFilterChange === 'function') window.dandySerpFilterChange();
+    }
+  };
+
+  window.dandyOpenZoomModal = function(imgUrl, title){
+    if(typeof window.dandyOpenPerfumePhotoModal === 'function'){
+      window.dandyOpenPerfumePhotoModal(imgUrl, title);
+    }
+  };
+
   // 16. INICIALIZACIÓN AL CARGAR LA PÁGINA
   function init(){
     var catalog = getActiveCatalog();
@@ -26921,5 +27059,5 @@ Jean Paul Gaultier Le Male Elixir 100ml - $2600" rows="7" style="width:100%;padd
 </div>
 </div>
 </div>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4772a8a0f718155',t:'MTc5MTQ4MzY5NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
