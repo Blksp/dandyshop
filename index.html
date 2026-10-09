@@ -11,7 +11,7 @@
 <meta content="website" property="og:type"/>
 <meta content="es_MX" property="og:locale"/>
 <meta content="summary" name="twitter:card"/>
-<meta content="#F4F7FB" name="theme-color"/>
+<meta content="#FCFCF9" name="theme-color"/>
 <meta content="yes" name="apple-mobile-web-app-capable"/>
 <meta content="yes" name="mobile-web-app-capable"/>
 <meta content="DANDY $HOP" name="apple-mobile-web-app-title"/>
@@ -9497,6 +9497,226 @@ body#dandy-site-root:not(#mp1):not(#mp2):not(#mp3):not(#mp4):not(#mp5):not(#mp6)
 <meta content="DANDY $HOP" name="application-name"/>
 <meta content="default" name="apple-mobile-web-app-status-bar-style"/>
 <meta content="telephone=no" name="format-detection"/>
+
+<style id="PROFESSIONAL-OVERRIDE">
+/* === DANDY $HOP - Professional Redesign (No AI Look) === */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap');
+
+:root{
+  --bg:#FCFCF9;
+  --bg-2:#F5F5F0;
+  --surface:#FFFFFF;
+  --surface-2:#FAFAF8;
+  --line:#E8E6E1;
+  --line-strong:#D6D3CD;
+  --text:#11110F;
+  --text-soft:#6B6760;
+  --text-faint:#9A9590;
+  --accent:#11110F;
+  --accent-hover:#2A2A28;
+  --gold:#C9A86A;
+  --gold-soft:#F5EEE0;
+  --success:#16A34A;
+  --danger:#DC2626;
+}
+
+html{color-scheme:light !important; background:var(--bg) !important; scroll-behavior:smooth;}
+body{
+  background:var(--bg) !important;
+  color:var(--text) !important;
+  font-family:'Inter',system-ui,-apple-system,sans-serif !important;
+  letter-spacing:-0.011em !important;
+  line-height:1.6 !important;
+}
+body::before, body::after{display:none !important;}
+
+/* Typography */
+h1,h2,h3,.serif{font-family:'Fraunces',Georgia,serif !important; letter-spacing:-0.02em !important; font-weight:700 !important;}
+p,span,div{letter-spacing:-0.011em;}
+
+/* Header - minimal */
+header{
+  background:rgba(252,252,249,0.92) !important;
+  backdrop-filter:blur(12px) !important;
+  border-bottom:1px solid var(--line) !important;
+  box-shadow:none !important;
+}
+.nav .brand span, .nav .brand span em{color:var(--text) !important; font-family:'Fraunces' !important; font-weight:700 !important;}
+.brand img{border:none !important; box-shadow:none !important; border-radius:10px !important;}
+nav.links a{color:var(--text-soft) !important; font-weight:500 !important; font-size:0.9rem !important;}
+nav.links a:hover{color:var(--text) !important;}
+nav.links a::after{display:none !important;}
+.nav-cta{
+  background:var(--accent) !important; color:white !important; border:1px solid var(--accent) !important;
+  border-radius:999px !important; font-weight:600 !important; box-shadow:none !important; padding:8px 18px !important;
+}
+.cart-toggle,.menu-toggle{
+  background:white !important; border:1px solid var(--line) !important; color:var(--text) !important; box-shadow:none !important; border-radius:999px !important;
+}
+.cart-count{background:var(--accent) !important; color:white !important; border:none !important;}
+
+/* Banners - subtle */
+.disc-banner,.ann-banner,#discBanner{
+  background:var(--text) !important; color:white !important; border:none !important; font-weight:500 !important; letter-spacing:0.02em !important; box-shadow:none !important;
+}
+#flashDealsBanner{background:#11110F !important; border:none !important;}
+
+/* Hero - editorial */
+.hero{
+  background:var(--bg) !important; border:none !important; min-height:auto !important; padding:88px 0 64px !important; isolation:auto !important;
+}
+.hero::before,.hero::after,.hero-bg{display:none !important;}
+.hero .eyebrow{
+  background:white !important; border:1px solid var(--line) !important; color:var(--text-soft) !important; box-shadow:none !important; border-radius:999px !important; font-family:'Inter' !important; font-size:0.72rem !important; letter-spacing:0.08em !important; font-weight:600 !important; text-transform:uppercase !important;
+}
+.hero .eyebrow::before{display:none !important;}
+.hero h1{color:var(--text) !important; text-shadow:none !important; font-size:clamp(2.6rem,6vw,4.2rem) !important; line-height:0.95 !important; letter-spacing:-0.04em !important;}
+.hero h1 .gold-text,.gold-text{background:none !important; -webkit-background-clip:unset !important; background-clip:unset !important; color:var(--text) !important;}
+.hero p.tag{color:var(--text-soft) !important; font-size:1.08rem !important; max-width:560px !important; line-height:1.5 !important;}
+.hero .btn-solid{
+  background:var(--accent) !important; color:white !important; border:1px solid var(--accent) !important; border-radius:999px !important; box-shadow:none !important; font-weight:600 !important; padding:13px 26px !important;
+}
+.hero .btn-solid:hover{background:var(--accent-hover) !important; transform:translateY(-1px) !important;}
+.btn-outline,.hero .btn-outline{
+  background:white !important; border:1px solid var(--line-strong) !important; color:var(--text) !important; border-radius:999px !important; box-shadow:none !important; font-weight:500 !important;
+}
+.hero-note{color:var(--text-faint) !important;}
+.hero-note a{color:var(--text) !important; text-decoration:underline !important;}
+.jackpot-cabinet{
+  background:white !important; border:1px solid var(--line) !important; border-radius:20px !important; box-shadow:0 12px 32px -16px rgba(0,0,0,0.12) !important;
+}
+.jackpot-cabinet::before{display:none !important;}
+
+/* Marquee */
+.marquee{background:var(--bg-2) !important; border-top:1px solid var(--line) !important; border-bottom:1px solid var(--line) !important; box-shadow:none !important;}
+.marquee span{color:var(--text-soft) !important; text-shadow:none !important; font-weight:500 !important; font-size:0.8rem !important;}
+
+/* Search and trust */
+.searchbar{
+  background:white !important; border:1px solid var(--line-strong) !important; border-radius:14px !important; box-shadow:0 1px 2px rgba(0,0,0,0.04) !important;
+}
+.searchbar:focus-within{border-color:var(--text) !important; box-shadow:0 0 0 3px rgba(0,0,0,0.06) !important;}
+.searchbar input{color:var(--text) !important;}
+.searchbar input::placeholder{color:var(--text-faint) !important;}
+.trustbar span{background:white !important; border:1px solid var(--line) !important; color:var(--text-soft) !important; box-shadow:none !important; border-radius:999px !important; font-size:0.75rem !important;}
+.shop-flow-inner{background:white !important; border:1px solid var(--line) !important; border-radius:20px !important; box-shadow:none !important;}
+.shop-flow-inner::after{display:none !important;}
+.shop-flow-head h2{color:var(--text) !important;}
+.shop-flow-step{background:var(--bg-2) !important; border:1px solid var(--line) !important; border-radius:14px !important; box-shadow:none !important;}
+.shop-flow-step .step-num{background:var(--text) !important; color:white !important; border:none !important; box-shadow:none !important;}
+.shop-flow-step h3{color:var(--text) !important;}
+.shop-flow-step p{color:var(--text-soft) !important;}
+
+/* Sections */
+section.block{background:var(--bg) !important; border:none !important; padding:56px 0 !important;}
+section.block.alt{background:var(--bg-2) !important; border-top:1px solid var(--line) !important; border-bottom:1px solid var(--line) !important;}
+.block-head h2{color:var(--text) !important; text-shadow:none !important; font-size:clamp(1.8rem,4vw,2.6rem) !important;}
+.block-head h2::after{display:none !important;}
+.block-head p{color:var(--text-soft) !important;}
+.hairline{display:none !important;}
+
+/* CARDS - the main fix */
+.card{
+  background:white !important; border:1px solid var(--line) !important; border-top:1px solid var(--line) !important; border-radius:16px !important;
+  box-shadow:0 1px 2px rgba(0,0,0,0.04), 0 4px 12px -4px rgba(0,0,0,0.06) !important;
+  transition:all 0.2s ease !important;
+}
+.card::before,.card::after{display:none !important;}
+.card:hover{
+  transform:translateY(-2px) !important;
+  border-color:var(--line-strong) !important;
+  box-shadow:0 4px 12px -4px rgba(0,0,0,0.08), 0 12px 24px -8px rgba(0,0,0,0.06) !important;
+}
+.card h3{color:var(--text) !important; font-size:1.05rem !important; font-weight:600 !important; font-family:'Inter' !important;}
+.card .kicker{color:var(--text-faint) !important; font-size:0.72rem !important; font-weight:600 !important; letter-spacing:0.06em !important; text-transform:uppercase !important;}
+.card p.desc,.price-note{color:var(--text-soft) !important; font-size:0.88rem !important;}
+.price-row .now{color:var(--text) !important; text-shadow:none !important; font-weight:700 !important; font-size:1.2rem !important;}
+.price-row .was{color:var(--text-faint) !important; text-decoration:line-through !important;}
+.plan-btn{background:var(--bg-2) !important; border:1px solid var(--line) !important; border-radius:10px !important; color:var(--text) !important; font-weight:500 !important;}
+.plan-btn:hover{background:var(--text) !important; color:white !important; border-color:var(--text) !important;}
+.flag,.off-badge{
+  background:var(--text) !important; color:white !important; border:none !important; border-radius:999px !important; font-size:0.68rem !important; font-weight:600 !important; letter-spacing:0.04em !important; box-shadow:none !important;
+}
+.flag.flag-wine{background:#111 !important;}
+
+/* Tables */
+.table-wrap,.card.table-card{background:white !important; border:1px solid var(--line) !important; border-radius:16px !important; overflow:hidden !important;}
+table th{background:var(--bg-2) !important; color:var(--text-soft) !important; font-size:0.72rem !important; font-weight:600 !important; text-transform:uppercase !important; letter-spacing:0.06em !important; border-bottom:1px solid var(--line) !important;}
+table td{color:var(--text) !important; border-bottom:1px solid var(--line) !important; font-size:0.9rem !important;}
+table td.now{color:var(--text) !important; font-weight:600 !important;}
+table td.action a{background:var(--text) !important; color:white !important; border:1px solid var(--text) !important; border-radius:999px !important; box-shadow:none !important; font-weight:600 !important; font-size:0.8rem !important; padding:6px 14px !important;}
+tbody tr:hover{background:var(--bg-2) !important;}
+
+/* Transfer / Payment */
+.transfer-card{background:white !important; border:1px solid var(--line) !important; border-radius:16px !important; box-shadow:none !important;}
+.transfer-card::before{display:none !important;}
+.transfer-label{color:var(--text-faint) !important; font-weight:600 !important; letter-spacing:0.06em !important;}
+.transfer-value{color:var(--text) !important; font-family:'Inter' !important; font-weight:600 !important;}
+.copy-btn{background:white !important; border:1px solid var(--line-strong) !important; color:var(--text) !important; border-radius:999px !important;}
+.copy-btn:hover{background:var(--text) !important; color:white !important;}
+.official-notice{background:var(--gold-soft) !important; border:1px solid #E9DFC8 !important; border-radius:12px !important;}
+.official-notice .seal{background:var(--text) !important; color:white !important; border:none !important; border-radius:999px !important;}
+.official-notice p{color:var(--text-soft) !important;}
+.official-notice strong{color:var(--text) !important;}
+
+/* Contact */
+.contact-panel{background:var(--text) !important; border:none !important; border-radius:24px !important; box-shadow:none !important;}
+.contact-panel::before,.contact-panel::after{display:none !important;}
+.contact-panel h2{color:white !important;}
+.contact-panel p{color:rgba(255,255,255,0.7) !important;}
+.contact-panel .eyebrow{color:rgba(255,255,255,0.5) !important; background:rgba(255,255,255,0.08) !important; border:1px solid rgba(255,255,255,0.12) !important;}
+.contact-panel .btn-solid{background:white !important; color:var(--text) !important; border-color:white !important;}
+.contact-panel .btn-outline{background:transparent !important; border-color:rgba(255,255,255,0.2) !important; color:white !important;}
+
+/* Footer */
+footer{background:var(--bg) !important; border-top:1px solid var(--line) !important; padding:48px 24px !important;}
+footer .brand-mini{color:var(--text) !important; font-family:'Fraunces' !important;}
+footer p{color:var(--text-soft) !important;}
+footer .foot-links a{color:var(--text-soft) !important;}
+footer .foot-links a:hover{color:var(--text) !important;}
+
+/* Cart */
+.cart-drawer{background:white !important; border-left:1px solid var(--line) !important; box-shadow:-20px 0 60px -20px rgba(0,0,0,0.15) !important;}
+.cart-head b{color:var(--text) !important;}
+.cart-item{border-color:var(--line) !important;}
+.cart-wa{background:var(--text) !important; border-radius:999px !important; color:white !important; font-weight:600 !important;}
+.cart-clear{color:var(--text-soft) !important;}
+
+/* Bot / FAQ */
+.dandy-bot-fab{background:var(--text) !important; border:none !important; color:white !important; box-shadow:0 8px 24px rgba(0,0,0,0.18) !important;}
+.dandy-bot-panel{background:white !important; border:1px solid var(--line) !important; border-radius:20px !important; box-shadow:0 24px 48px -12px rgba(0,0,0,0.18) !important;}
+.db-head{background:white !important; border-color:var(--line) !important;}
+.db-title{color:var(--text) !important; font-family:'Inter' !important; font-weight:600 !important;}
+.db-msg.bot{background:var(--bg-2) !important; border:1px solid var(--line) !important; color:var(--text) !important;}
+.db-msg.user{background:var(--text) !important; color:white !important;}
+.faq-item{background:white !important; border:1px solid var(--line) !important; border-radius:12px !important;}
+.faq-item summary{color:var(--text) !important; font-family:'Inter' !important; font-weight:600 !important;}
+.faq-item summary::after{color:var(--text-faint) !important;}
+.faq-item p{color:var(--text-soft) !important;}
+
+/* Remove all decorative card watermarks, playing cards, etc */
+.dandy-card-theme::after,.shop-flow-inner::after,.hero .wrap::after,.crest-frame{display:none !important;}
+.insurer-card{background:white !important; border:1px solid var(--line) !important; border-left:1px solid var(--line) !important; border-radius:12px !important; color:var(--text) !important; box-shadow:none !important;}
+.insurer-card:hover{border-color:var(--line-strong) !important; transform:translateY(-1px) !important; box-shadow:0 4px 12px rgba(0,0,0,0.06) !important;}
+.insurer-card-name{color:var(--text) !important;}
+.insurer-card-meta{color:var(--text-soft) !important;}
+.directory-note{background:var(--bg-2) !important; border:1px solid var(--line) !important; border-left:2px solid var(--text) !important; border-radius:12px !important; color:var(--text-soft) !important;}
+
+/* General cleanup */
+.wrap{color:var(--text) !important;}
+.btn-solid{border-radius:999px !important; font-weight:600 !important;}
+.btn-outline{border-radius:999px !important;}
+.sales-tick{background:white !important; border:1px solid var(--line) !important; border-radius:12px !important; box-shadow:none !important; color:var(--text) !important;}
+.sales-tick::before,.sales-tick::after{display:none !important;}
+.admin-gear{background:white !important; border:1px solid var(--line) !important; color:var(--text-soft) !important; box-shadow:0 4px 12px rgba(0,0,0,0.06) !important;}
+
+/* Make price chips subtle */
+.svc-chip{background:white !important; border:1px solid var(--line) !important; border-radius:999px !important;}
+
+/* Hide Cloudflare iframes styling interference */
+iframe[style*="visibility:hidden"]{display:none !important;}
+</style>
+
 </head>
 <body id="dandy-site-root">
 <a class="skip-link" href="#top">Saltar al contenido</a>
@@ -11233,7 +11453,7 @@ body#dandy-site-root:not(#mp1):not(#mp2):not(#mp3):not(#mp4):not(#mp5):not(#mp6)
 </script>
 <script>
 (function(){
-  var ADMIN_PIN = "2710";
+  var ADMIN_PIN = "27106927";
   var STORAGE_PREFIX = "dandyPrice_";
   var WA_BASE = 'https://wa.me/524681138426?text=';
   var WAS_NOW = ['Recargas Telcel','Recargas Bait','Paquetes Bait'];
